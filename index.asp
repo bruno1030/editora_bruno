@@ -20,26 +20,31 @@ telefone = 99999999
 %>
 
 
-<!-- <html lang="pt" dir="ltr"> -->
-<html>
+<html lang="pt" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/style_index.css">
     <title>== EDITORA BRUNO ==</title>
   </head>
   <body>
 
-    <h1>Editora Bruno</h1>
+    <div id="principal">
 
-    <div id="conteudo">
-      <p>Nome do autor: <% = nome%></p>
-      <p>Gênero: <% = genero%></p>
-      <p>Endereco: <% = endereco%></p>
-      <p>Cidade: <% = cidade%></p>
-      <p>Estado: <% = uf%></p>
-      <p>RG: <% = rg%></p>
-      <p>CEP: <% = cep%></p>
-      <p>Telefone: <% = telefone%></p>
+      <h1>Editora Bruno</h1>
+
+
+
+      <div id="conteudo">
+        <p>Nome do autor: <% = nome%></p>
+        <p>Gênero: <% = genero%></p>
+        <p>Endereco: <% = endereco%></p>
+        <p>Cidade: <% = cidade%></p>
+        <p>Estado: <% = uf%></p>
+        <p>RG: <% = rg%></p>
+        <p>CEP: <% = cep%></p>
+        <p>Telefone: <% = telefone%></p>
+      </div>
+
     </div>
 
   </body>

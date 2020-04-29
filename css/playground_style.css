@@ -1,0 +1,41 @@
+#principal{
+	width: 80%;
+	height: 900px;
+	margin: 50px auto;
+	border: 3px solid blue;
+	background-color: #FFF;
+	box-sizing: border-box;
+	padding: 40px;
+	font-family: helvetica;
+}
+
+h1, h2, h3{
+  text-align: center;
+}
+
+div{
+	width: 60%;
+	margin: auto auto 50px auto;
+
+}
+
+#conteudo{
+	display: block;
+  	color: #000;
+  	box-sizing: border-box;
+}
+
+#condicionante{
+	display: block;
+	background-color: gray;
+}
+
+p{
+	font-size: 30px;
+	text-indent: 5px;
+  	background-color: rgba(235,235,184,1);
+}
+
+td{
+	font-size: 20px;
+}
