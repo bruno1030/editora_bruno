@@ -2,21 +2,23 @@
 <%
 Option Explicit
 
-'***Declaracao de variaveis de texto
-DIM nome, genero, endereco, cidade, uf
+'***Declaracao de variaveis e constantes
+Dim dbConnection        'variavel p/ conexao ao banco de dados
+Dim rsLivros            'variavel p/ abertura da tabela que vou usar
+Const dbAddress = "c:\inetpub\wwwroot\editora_bruno\dbEditora.mdb"      'informando onde está localizado o banco de dados
 
-'***Declaracao de variaveis numericas
-DIM RG, CEP, telefone
 
 '*** Atribuindo valores às variáveis
-nome = "Bruno Martins"
-genero = "M"
-endereco = "Rua do Exemplo, 9999, ap 99"
-cidade = "São Paulo"
-uf = "SP"
-rg = 124567890
-cep = 12345000
-telefone = 99999999
+Set dbConnection = server.CreateObject("ADODB.Connection")     'criação de um objeto Connection
+'Estabelecendo a conexao
+dbConnection.Open "driver={Microsoft Access Driver (*.mdb)};dbq=" & dbAddress
+
+
+Set rsLivros = server.CreateObject("ADODB.Recordset")          'criação de um objeto Recordset
+
+'Abrindo a tabela de dados com o Recordset
+rsLivros.Open "Livros",dbConnection
+
 %>
 
 
@@ -35,17 +37,24 @@ telefone = 99999999
 
 
       <div id="conteudo">
-        <p>Nome do autor: <% = nome%></p>
-        <p>Gênero: <% = genero%></p>
-        <p>Endereco: <% = endereco%></p>
-        <p>Cidade: <% = cidade%></p>
-        <p>Estado: <% = uf%></p>
-        <p>RG: <% = rg%></p>
-        <p>CEP: <% = cep%></p>
-        <p>Telefone: <% = telefone%></p>
+        <% Do While Not rsLivros.Eof %>
+          <div class="livros">
+            <p>Codigo: <% =rsLivros("codigo")%></p>
+            <p>Titulo: <% =rsLivros("Titulo")%></p>
+            <p>Autor: <% =rsLivros("autor")%></p>
+          </div>
+        <%
+          rsLivros.MoveNext
+          Loop
+        %>
       </div>
 
     </div>
 
   </body>
 </html>
+<% 
+  'Fechar conexao com o banco de dados
+  rsLivros.Close
+  dbConnection.Close
+%>

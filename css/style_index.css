@@ -1,16 +1,25 @@
 #principal{
   width: 70%;
-  margin: 40px auto auto auto;
+  margin: 20px auto 100px auto;
   font-family: Courier;
 }
 
 h1{
-  text-align: center;
+	width: 100%;
+  margin: 60px auto 60px auto;
 }
 
-div{
-  background-color: rgba(30,90,200,1);
-  color: #FFF;
-  padding-left: 20px;
-  box-sizing: border-box;
+#conteudo{
+ 	 background-color: rgba(30,90,200,1);
+  	color: #FFF;
+  	box-sizing: border-box;
+ 	width: 100%;
+ 	 margin: auto;
+}
+
+.livros{
+	border: 1px solid #FFF;
+	margin: auto;
+	padding-left: 20px;
+	width: 100%
 }

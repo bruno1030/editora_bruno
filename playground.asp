@@ -5,13 +5,14 @@ Option Explicit
 
 
 '***Declaracao de variaveis
-Dim a, contador, linha, coluna
+Dim a, contador, linha, coluna, nomeCompleto
 
 '***Atribuicao de valores as variaveis
 a = 5
 contador = 1
 linha = 1
 coluna = 1
+nomeCompleto = "Bruno Oliveira Martins"
 
 '***Declaracao de vetor e matriz
 Dim DiasDaSemana(7)
@@ -126,7 +127,17 @@ Paises(5,3) = "Espanhol"
       </div>
 
       <div>
-        <p>Hoje é <span><% =DiasDaSemana(WeekDay(Date))%><span></p>
+        <p>Agora é <span id="date"><% =DiasDaSemana(WeekDay(Date))%> - <% =Date%> - <% =Hour(time)%>:<%=Minute(time)%><span></p>
+      </div>
+
+      <div>
+        <p>Meu nome completo é <b><% =nomeCompleto %></b></p>
+        <p>Quantidade de caracteres: <b><% =Len(nomeCompleto) %></b></p>
+      </div>
+
+      <div>
+        <p>Valor em double: 1235.59</b></p>
+        <p>Valor em int (com CInt): <% =CInt(1235.59)%></p>
       </div>
 
     </div>
