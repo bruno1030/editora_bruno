@@ -1,6 +1,5 @@
 #principal{
 	width: 80%;
-	height: 900px;
 	margin: 50px auto;
 	border: 3px solid blue;
 	background-color: #FFF;
@@ -31,11 +30,36 @@ div{
 }
 
 p{
-	font-size: 30px;
+	font-size: 25px;
 	text-indent: 5px;
   	background-color: rgba(235,235,184,1);
 }
 
-td{
-	font-size: 20px;
+table{
+	margin: auto;
+	width: 100%;
+}
+
+th, td{
+	display: inline-block;
+	text-align: center;
+	border: 1px solid rgba(50,205,130,1);
+	width: 30%;
+}
+
+th{
+	padding-top: 15px;
+	padding-bottom: 15px;
+	background-color: rgba(200,230,200,1);
+	font-size: 30px;
+}
+
+.paises{
+	font-size: 15px;
+	background-color: #FFF;
+}
+
+span{
+	color: rgba(180,40,40,1);
+	font-weight: bold;
 }

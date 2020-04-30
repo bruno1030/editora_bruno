@@ -5,11 +5,46 @@ Option Explicit
 
 
 '***Declaracao de variaveis
-Dim a, contador
+Dim a, contador, linha, coluna
 
 '***Atribuicao de valores as variaveis
 a = 5
 contador = 1
+linha = 1
+coluna = 1
+
+'***Declaracao de vetor e matriz
+Dim DiasDaSemana(7)
+Dim Paises(5,3)
+
+'***Alimentando o vetor
+DiasDaSemana(1) = "Domingo"
+DiasDaSemana(2) = "Segunda-Feira"
+DiasDaSemana(3) = "Terça-Feira"
+DiasDaSemana(4) = "Quarta-Feira"
+DiasDaSemana(5) = "Quinta-Feira"
+DiasDaSemana(6) = "Sexta-Feira"
+DiasDaSemana(7) = "Sábado"
+
+'***Alimentando a matriz
+Paises(1,1) = "Brasil"
+Paises(2,1) = "Argentina"
+Paises(3,1) = "Italia"
+Paises(4,1) = "Estados Unidos"
+Paises(5,1) = "Espanha"
+
+Paises(1,2) = "Brasilia"
+Paises(2,2) = "Buenos Aires"
+Paises(3,2) = "Roma"
+Paises(4,2) = "Washington"
+Paises(5,2) = "Madri"
+
+Paises(1,3) = "Portugues"
+Paises(2,3) = "Espanhol"
+Paises(3,3) = "Italiano"
+Paises(4,3) = "Ingles"
+Paises(5,3) = "Espanhol"
+
 
 %>
 
@@ -24,7 +59,6 @@ contador = 1
   </head>
 
   <body>
-
     <div id="principal">
 
       <h1>Playground</h1>
@@ -63,10 +97,41 @@ contador = 1
         </table>
       </div>
 
-    </div>
+      <div>
+        <h3>Vetor (dias da semana)</h3>
+        
+        <% for contador = 1 to 7 %>
+          <p><% =DiasDaSemana(contador) %></p>
+        <% next%>
+      </div>
 
+      <div>
+        <h3>Matriz (países)</h3>
+        <table>
+          
+          <tr>
+            <th>País</th>
+            <th>Capital</th>
+            <th>Idioma</th>
+          </tr>
+
+            <% for linha = 1 to 5 %>
+          <tr>
+              <% for coluna = 1 to 3 %>
+            <td><p class="paises"><% =Paises(linha, coluna)%></p><br></td>
+              <%next%>
+            <%next%>
+          </tr>
+        </table>
+      </div>
+
+      <div>
+        <p>Hoje é <span><% =DiasDaSemana(WeekDay(Date))%><span></p>
+      </div>
+
+    </div>
   </body>
 </html>
 
   <!-- <p style="color:#FF0000";>Red paragraph text</p> -->
-    <!-- <p style="color:rgba(255,0,0,0.5);">Red paragraph text</p> -->
+    <!-- <p style="color:rgba(255,0,0,0.5);">Red paragraph text           '      </p> -->
