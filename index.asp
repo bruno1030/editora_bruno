@@ -1,26 +1,38 @@
 <%@LANGUAGE="VBSCRIPT"%>
+
 <%
+
 Option Explicit
 
 '***Declaracao de variaveis e constantes
 Dim dbConnection        'variavel p/ conexao ao banco de dados
 Dim rsLivros            'variavel p/ abertura da tabela que vou usar
-Const dbAddress = "c:\inetpub\wwwroot\editora_bruno\dbEditora.mdb"      'informando onde está localizado o banco de dados
+Dim rsTotal
+Dim sqlLivros           'essa variavel irá armazenar o retorno da minha instrucao SQL para retornar os livros
+Dim sqlTotal            'essa variavel irá armazenar o retorno da minha instrucao SQL para retornar a quantidade de livros
 
+'Const dbAddress = "c:\inetpub\wwwroot\editora_bruno\dbEditora.mdb"      'informando onde está localizado o banco de dados
 
 '*** Atribuindo valores às variáveis
-Set dbConnection = server.CreateObject("ADODB.Connection")     'criação de um objeto Connection
+    'Set dbConnection = server.CreateObject("ADODB.Connection")     'criação de um objeto Connection
 'Estabelecendo a conexao
-dbConnection.Open "driver={Microsoft Access Driver (*.mdb)};dbq=" & dbAddress
+    'dbConnection.Open "driver={Microsoft Access Driver (*.mdb)};dbq=" & dbAddress
 
+call openDatabase
 
-Set rsLivros = server.CreateObject("ADODB.Recordset")          'criação de um objeto Recordset
+'Set rsLivros = server.CreateObject("ADODB.Recordset")          'criação de um objeto Recordset
+
+sqlLivros = " SELECT codigo, preco, titulo, autor FROM Livros"
+sqlTotal = " SELECT COUNT(codigo) AS TOTAL from Livros"
+Set rsLivros = dbConnection.Execute(sqlLivros)
+Set rsTotal = dbConnection.Execute(sqlTotal)
 
 'Abrindo a tabela de dados com o Recordset
-rsLivros.Open "Livros",dbConnection
+    'rsLivros.Open "Livros",dbConnection
 
 %>
 
+<!--#include file ="dbConnection.inc"-->
 
 <html lang="pt" dir="ltr">
   <head>
@@ -34,20 +46,33 @@ rsLivros.Open "Livros",dbConnection
 
       <h1>Editora Bruno</h1>
 
+      <h3>Olá pessoal! Estes são alguns dados da tabela "Livros" da editora</h3>
 
 
-      <div id="conteudo">
+      <table>
+        
+        <tr>
+          <th>Codigo</th>
+          <th>Preço</th>
+          <th>Título</th>
+          <th>Autor</th>
+        </tr>
+
         <% Do While Not rsLivros.Eof %>
-          <div class="livros">
-            <p>Codigo: <% =rsLivros("codigo")%></p>
-            <p>Titulo: <% =rsLivros("Titulo")%></p>
-            <p>Autor: <% =rsLivros("autor")%></p>
-          </div>
+          <tr>
+            <td><% =rsLivros("codigo")%></td>
+            <td><% = FormatCurrency(rsLivros("preco"),2)%></td>
+            <td><% =rsLivros("titulo")%></td>
+            <td><% =rsLivros("autor")%></td>
+          </tr>
         <%
           rsLivros.MoveNext
           Loop
         %>
-      </div>
+
+      </table>
+
+      <p id="final">No momento estamos com <span><% =rsTotal("total") %></span> livros em nossa editora.
 
     </div>
 
@@ -56,5 +81,6 @@ rsLivros.Open "Livros",dbConnection
 <% 
   'Fechar conexao com o banco de dados
   rsLivros.Close
-  dbConnection.Close
+  call closeDatabase
+  set rsLivros = nothing
 %>
