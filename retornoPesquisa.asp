@@ -10,6 +10,9 @@ Dim rsLivros            'variavel p/ abertura da tabela que vou usar
 Dim rsTotal
 Dim sqlLivros           'essa variavel irá armazenar o retorno da minha instrucao SQL para retornar os livros
 Dim sqlTotal            'essa variavel irá armazenar o retorno da minha instrucao SQL para retornar a quantidade de livros
+Dim inputText
+
+set inputText = request.form("pesqLivro")
 
 'Const dbAddress = "c:\inetpub\wwwroot\editora_bruno\dbEditora.mdb"      'informando onde está localizado o banco de dados
 
@@ -22,8 +25,8 @@ call openDatabase
 
 'Set rsLivros = server.CreateObject("ADODB.Recordset")          'criação de um objeto Recordset
 
-sqlLivros = " SELECT codigo, preco, titulo, autor FROM Livros"
-sqlTotal = " SELECT COUNT(codigo) AS TOTAL from Livros"
+sqlLivros = " SELECT codigo, preco, titulo, autor FROM Livros where categoria LIKE '%" + inputText + "%'"
+sqlTotal = " SELECT COUNT(codigo) AS TOTAL from Livros where categoria LIKE '%" + inputText + "%'"
 Set rsLivros = dbConnection.Execute(sqlLivros)
 Set rsTotal = dbConnection.Execute(sqlTotal)
 
@@ -38,7 +41,7 @@ Set rsTotal = dbConnection.Execute(sqlTotal)
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="/css/style.css">
-    <title>== EDITORA BRUNO ==</title>
+    <title>== PESQUISA CONCLUIDA ==</title>
   </head>
   <body>
 
@@ -52,12 +55,15 @@ Set rsTotal = dbConnection.Execute(sqlTotal)
             <li><a href="#">Contato</a></li>
             <li><a href="#">Sobre</a></li>
             <li><a href="pesquisar.asp">Pesquisar livro</a></li>
+            <li><a href="index.asp">Home</a></li>
             <li><a href="insert.asp">Incluir livro</a></li>
           </ul>
         </nav>
       </header>
-      <h1>Olá pessoal! Estes são alguns dados da tabela "Livros" da editora</h1>
 
+      <p class="result">Sua busca foi feita pela categoria <span><% =inputText%></span></p>
+
+      <h1>Seguem abaixo os livros encontrados a partir da sua pesquisa</h1>
 
       <table>
         
@@ -82,7 +88,7 @@ Set rsTotal = dbConnection.Execute(sqlTotal)
 
       </table>
 
-      <p id="final">No momento estamos com <span><% =rsTotal("total") %></span> livros em nossa editora.
+      <p id="final">No momento estamos com <span><% =rsTotal("total") %></span> livros em nossa editora com esta categoria.
 
     </div>
 
