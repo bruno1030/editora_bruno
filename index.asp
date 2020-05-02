@@ -44,9 +44,17 @@ Set rsTotal = dbConnection.Execute(sqlTotal)
 
     <div id="principal">
 
-      <h1>Editora Bruno</h1>
+      <header>
 
-      <h3>Olá pessoal! Estes são alguns dados da tabela "Livros" da editora</h3>
+        <img src="/images/logo.png" alt="Editora Bruno" id="logo">
+        <nav>
+          <ul>
+            <li><a href="#">Contato</a></li>
+            <li><a href="#">Sobre</a></li>
+          </ul>
+        </nav>
+      </header>
+      <h1>Olá pessoal! Estes são alguns dados da tabela "Livros" da editora</h1>
 
 
       <table>
