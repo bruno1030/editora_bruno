@@ -39,7 +39,7 @@ set rsLivros = nothing
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="/css/style.css">
-    <title>== RETORNO ==</title>
+    <title>== RETORNO Exclusao ==</title>
   </head>
   <body>
 

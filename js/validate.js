@@ -2,39 +2,40 @@
 
 function validaForm(){
 
-        if(document.formInclusao.categoria.value.length <1){
+        if(document.formSalvar.categoria.value.length <1){
           alert("O campo CATEGORIA nao pode ficar em branco")
-          formInclusao.categoria.focus();
+          formSalvar.categoria.focus();
           return false;
         }
-        if (document.formInclusao.titulo.value.length <1) {
+        if (document.formSalvar.titulo.value.length <1) {
           alert("O campo TITULO nao pode ficar em branco")
-          formInclusao.titulo.focus();
+          formSalvar.titulo.focus();
           return false;
         }
-        if (document.formInclusao.autor.value.length <1) {
+        if (document.formSalvar.autor.value.length <1) {
           alert("o campo AUTOR nao pode ficar em branco")
-          formInclusao.autor.focus();
+          formSalvar.autor.focus();
           return false;
         }
-        if (document.formInclusao.numPaginas.value.length <1) {
-          document.formInclusao.numPaginas.value = "Nao informado";
+        if (document.formSalvar.numPaginas.value.length <1) {
+          document.formSalvar.numPaginas.value = "Nao informado";
           return true;
         }
-        if (document.formInclusao.preco.value.length <1) {
-          document.formInclusao.preco.value = "Nao informado";
+        if (document.formSalvar.preco.value.length <1) {
+          document.formSalvar.preco.value = "Nao informado";
           return true;
         }
-        if (document.formInclusao.resumo.value.length <1) {
-          document.formInclusao.resumo.value = "Nao informado";
+        if (document.formSalvar.resumo.value.length <1) {
+          document.formSalvar.resumo.value = "Nao informado";
           return true;
         }
-        if (document.formInclusao.lancamento.value.length <1) {
-          document.formInclusao.lancamento.value = "Nao informado";
+        if (document.formSalvar.lancamento.value.length <1) {
+          document.formSalvar.lancamento.value = "Nao informado";
           return true;
         }
-        if (document.formInclusao.dataPublicacao.value.length <1) {
-          document.formInclusao.dataPublicacao.value = "Nao informado";
+        if (document.formSalvar.dataPublicacao.value.length <1) {
+          document.formSalvar.dataPublicacao.value = "Nao informado";
           return true;
         }
       }
+

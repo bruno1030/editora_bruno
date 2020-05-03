@@ -31,7 +31,7 @@
       <h1>Inclusao de livro</h1>
 
 
-      <form name="formInclusao" action="retornoInsert.asp" method="POST" onSubmit="return validaForm(this);">
+      <form name="formSalvar" action="retornoInsert.asp" method="POST" onSubmit="return validaForm(this);">
         
         <label>Categoria</label>
         <input type="text" name="categoria">

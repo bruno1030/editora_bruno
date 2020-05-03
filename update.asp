@@ -48,7 +48,7 @@
       <p>Aqui você pode editar as informacoes do livro selecionado</p>
 
 
-      <form name="formEditar" action="retornoUpdate.asp" method="POST" onSubmit="return validaForm(this);">
+      <form name="formSalvar" action="index.asp" method="POST" onSubmit="return validaForm(this);">
         
         <label>Codigo</label>
         <input type="text" name="codigo" value="<% =rsLivros("codigo")%>">
@@ -84,6 +84,8 @@
         <input type="reset" value="Limpar campos" name="btLimpar" id="btnLimpar">
 
       </form>
+
+        <a href="retornoDelete.asp?codigo1=<% = rsLivros("codigo")%>" id="btnDeletar">Deletar</a>
 
     </div>
 
