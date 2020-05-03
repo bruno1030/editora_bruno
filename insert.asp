@@ -10,7 +10,7 @@
     <script src="js/validate.js"></script>
 
 
-    <title>== INCLUIR LIVRO ==</title>
+    <title>== INFORMACOES DOS LIVROS ==</title>
   </head>
   <body>
 
@@ -58,7 +58,7 @@
         </select>
 
         <label>Data de Publicação</label>
-        <input type="date" name="dataPublicacao">
+        <input type="text" name="dataPublicacao">
 
         <input type="submit" value="Salvar" name="btnSalvar" id="btnSalvar">
         <input type="reset" value="Limpar campos" name="btLimpar" id="btnLimpar">

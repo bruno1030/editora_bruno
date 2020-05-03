@@ -11,29 +11,27 @@
 '***Declaracao de variaveis e constantes
 Dim dbConnection        'variavel p/ conexao ao banco de dados
 Dim rsLivros            'variavel p/ abertura da tabela que vou usar
-Dim sqlInsert          
-Dim inputText
-Dim varCategoria, varTitulo, varAutor, varNumPaginas, varPreco, varResumo, varLancamento, varDataPublicacao
+Dim sqlUpdate          
+Dim varCodigo, varCategoria, varTitulo, varAutor, varNumPaginas, varPreco, varResumo, varLancamento, varDataPublicacao
 
+varCodigo = TRIM(request.form("codigo"))
 varCategoria = TRIM(request.form("categoria"))
 varTitulo = TRIM(request.form("titulo"))
 varAutor = TRIM(request.form("autor"))
-varNumPaginas = request.form("numPaginas")
+varNumPaginas = TRIM(request.form("numPaginas"))
 varPreco = TRIM(request.form("preco"))
 varResumo = TRIM(request.form("resumo"))
-varLancamento = request.form("lancamento")
-varDataPublicacao = request.form("dataPublicacao")
-
-sqlInsert = "INSERT INTO Livros (Categoria, titulo, autor, numPaginas, preco, resumo, lancamento, dataPublicacao) VALUES "
-sqlInsert = sqlInsert + "('" + varCategoria + "','"+ varTitulo + "','"+ varAutor + "','"+ varNumPaginas + "','"+ varPreco + "','"+ varResumo + "','"+ varLancamento + "','"+ varDataPublicacao + "')"
-
+varLancamento = TRIM(request.form("lancamento"))
+varDataPublicacao = TRIM(request.form("dataPublicacao"))
 
 call openDatabase
 
-'Set rsLivros = server.CreateObject("ADODB.Recordset")          'criação de um objeto Recordset
+sqlUpdate = "UPDATE Livros SET Categoria = '" + varCategoria + "', Titulo = '"+ varTitulo + "', autor = '"+ varAutor +"', NumPaginas = '"+ varNumPaginas + "', preco = '"+ varPreco + "', resumo = '"+ varResumo + "', lancamento = '"+ varLancamento + "', dataPublicacao = '" + varDataPublicacao + "' WHERE Codigo = " + varCodigo
 
-Set rsLivros = dbConnection.Execute(sqlInsert)
+Set rsLivros = dbConnection.Execute(sqlUpdate)
 
+call closeDatabase
+set rsLivros = nothing
 
 %>
 
@@ -61,15 +59,10 @@ Set rsLivros = dbConnection.Execute(sqlInsert)
         </nav>
       </header>
 
-      <p class="result">O livro <span><% =varTitulo%></span> foi incluido com sucesso</p>
+      <p class="result">O livro <span><% =varTitulo%></span> foi alterado com sucesso</p>
 
       
     </div>
 
   </body>
 </html>
-<% 
-  'Fechar conexao com o banco de dados
-  call closeDatabase
-  set rsLivros = nothing
-%>

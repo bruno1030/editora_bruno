@@ -39,7 +39,7 @@ a{
 }
 
 a:hover{
-	color: yellow;
+	color: orange;
 }
 
 h1{
@@ -83,7 +83,7 @@ td{
 span {
 	font-weight: bold;
 	color: rgba(70,110,130,1);
-	font-size: 20px;
+	font-size: 25px;
 }
 
 .result{
@@ -106,7 +106,7 @@ label{
 	font-weight: bold;
 }
 
-#btnSalvar, #btnLimpar{
+#btnSalvar, #btnLimpar, #btnEditar{
 	margin-top: 20px;
 	padding: 20px 20px;
 	box-sizing: border-box;
@@ -115,4 +115,8 @@ label{
 #resumo{
 	height: 90px;
 	width: 40%
+}
+
+.titulos{
+	color: rgba(50,80,180,1);
 }

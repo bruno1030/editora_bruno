@@ -72,7 +72,7 @@ Set rsTotal = dbConnection.Execute(sqlTotal)
           <tr>
             <td><% =rsLivros("codigo")%></td>
             <td><% = FormatCurrency(rsLivros("preco"),2)%></td>
-            <td><% =rsLivros("titulo")%></td>
+            <td><a href="update.asp?codigo1=<% = rsLivros("codigo")%>" class="titulos"><% =rsLivros("titulo")%></a></td>
             <td><% =rsLivros("autor")%></td>
           </tr>
         <%
